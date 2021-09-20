@@ -1,0 +1,29 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies{
+    implementation libraries.kotlinJdk
+    implementation libraries.kotlinReflect
+
+    implementation libraries.kotlinCoroutineCore
+    implementation libraries.kotlinCoroutineAndroid
+
+    kapt libraries.lifecycleCompiler
+}
+
