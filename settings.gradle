@@ -1,12 +1,5 @@
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
-    }
-}
-rootProject.name = "ModuleAdater"
+
+rootProject.name = "ModuleAdapter"
 include ':app'
 include ':module_adapter'
 include ':module_adapter_vlayout'
