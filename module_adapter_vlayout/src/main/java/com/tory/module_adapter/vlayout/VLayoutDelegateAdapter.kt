@@ -8,10 +8,6 @@ class VLayoutDelegateAdapter(layoutManager: VirtualLayoutManager?) : DelegateAda
 
     private var recyclerView: RecyclerView? = null
 
-    private fun checkIllegalPosition(position: Int): Boolean {
-        return position < 0 || position > itemCount - 1
-    }
-
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         this.recyclerView = recyclerView

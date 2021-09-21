@@ -34,5 +34,7 @@ android {
 dependencies {
     compileOnly project(":module_adapter")
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'com.alibaba.android:vlayout:1.2.36'
+
 }
