@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_staggeredListFragment"
             app:destination="@id/staggeredListFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_vlayoutListFragment"
+            app:destination="@id/vlayoutListFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -44,4 +47,11 @@
         tools:layout="@layout/fragment_staggered_list">
 
     </fragment>
+    <fragment
+        android:id="@+id/vlayoutListFragment"
+        android:name="com.tory.moduleadater.VlayoutListFragment"
+        android:label="VlayoutListFragment"
+        tools:layout="@layout/fragment_normal_recycler_view"/>
+
+
 </navigation>

@@ -482,7 +482,7 @@ class ModuleAdapterDelegate(
 
     private fun findCachedGroupPosition(types: Set<ViewType<*>>, position: Int): Int {
         if (!checkPosition(position)) return -1
-        if (!(getViewTypeByPosition(position) in types)) {
+        if (getViewTypeByPosition(position) !in types) {
             // 在这里将类型不匹配的拦掉
             return -1
         }
@@ -608,11 +608,6 @@ class ModuleAdapterDelegate(
         return glm
     }
 
-    fun getSpanMargin(position: Int): Point? {
-        val type = getViewTypeByPosition(position) ?: return null
-        return type.margin
-    }
-
     fun getGridSpanLookup(): Pair<Int, GridLayoutManager.SpanSizeLookup> {
         val cache = spanLookupCache
         if (cache != null) {
@@ -676,7 +671,6 @@ class ViewType<T : Any>(
     val groupType: String,
     val gridSize: Int = 1,
     val poolSize: Int = -1,
-    val margin: Point? = null,
     val viewCreator: IViewCreator
 ) : IViewType<T>
 
@@ -690,7 +684,8 @@ class ViewTypeGroup<T : Any>(
 class ItemSpace(
     val spaceH: Int = 0,
     val spaceV: Int = 0,
-    val edgeH: Int = 0
+    val edgeH: Int = 0,
+    val hasTop: Boolean = false
 )
 
 typealias ModelKeyGetter<T> = (t: T) -> Any?

@@ -37,6 +37,9 @@ class MainFragment : Fragment() {
         binding.buttonStaggeredList.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_staggeredListFragment)
         }
+        binding.buttonVlayoutList.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_vlayoutListFragment)
+        }
     }
 
     override fun onDestroyView() {

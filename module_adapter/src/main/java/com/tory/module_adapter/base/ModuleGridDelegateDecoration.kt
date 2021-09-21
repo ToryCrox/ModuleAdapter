@@ -2,6 +2,7 @@ package com.tory.module_adapter.base
 
 import android.graphics.Rect
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
@@ -56,14 +57,15 @@ class ModuleGridDelegateDecoration(val moduleAdapter: IModuleAdapter) : Recycler
         if (position < 0 || position >= moduleAdapter.getItemCount()) {
             return
         }
+
         val groupType = moduleAdapter.getGroupTypeByPosition(position)
         val itemSpace = spaceMap[groupType] ?: return
 
-        getOffsets(view, outRect, groupType, position, itemSpace)
+        getOffsets(view, view, outRect, groupType, position, itemSpace)
     }
 
     private fun getOffsets(
-        view: View,
+        view: View, moduleView: IModuleView<*>,
         outRect: Rect, groupType: String, layoutPosition: Int,
         mItemSpace: MItemSpace
     ) {
@@ -76,15 +78,20 @@ class ModuleGridDelegateDecoration(val moduleAdapter: IModuleAdapter) : Recycler
 
         val row: Int = groupPosition / gridSize
         val lp = view.layoutParams
-        val column: Int = if (lp is StaggeredGridLayoutManager.LayoutParams) {
-            lp.spanIndex
-        } else {
-            val perSpan = moduleAdapter.getSpanCount() / gridSize
-            moduleAdapter.getSpanIndex(layoutPosition) / perSpan
+        val column: Int = when {
+            lp is StaggeredGridLayoutManager.LayoutParams -> lp.spanIndex
+            lp is GridLayoutManager.LayoutParams && lp.spanSize > 0 -> lp.spanIndex / lp.spanSize
+            else -> {
+                val perSpan = moduleAdapter.getSpanCount() / gridSize
+                moduleAdapter.getSpanIndex(layoutPosition) / perSpan
+            }
         }
-        if (row != 0) {
+        if (row != 0 || mItemSpace.itemSpace.hasTop) {
             outRect.top = spaceV
         }
+//        if (mItemSpace.itemSpace.hasBottom && groupPosition == moduleView.groupCount - 1) {
+//            outRect.bottom = spaceV
+//        }
         // p为每个Item都需要减去的间距
         val p = mItemSpace.avgItemOffset
         val left = edgeH + column * (spaceH - p)

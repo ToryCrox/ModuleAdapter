@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "ModuleAdater"
 include ':app'
 include ':module_adapter'
+include ':module_adapter_vlayout'

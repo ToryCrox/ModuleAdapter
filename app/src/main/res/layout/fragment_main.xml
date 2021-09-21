@@ -20,4 +20,10 @@
         android:layout_height="wrap_content"
         android:text="瀑布流示例"/>
 
+    <Button
+        android:id="@+id/button_vlayout_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VLayout示例"/>
+
 </LinearLayout>

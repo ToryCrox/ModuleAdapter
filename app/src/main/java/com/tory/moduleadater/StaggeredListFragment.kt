@@ -49,7 +49,7 @@ class StaggeredListFragment: Fragment() {
         }
 
         listAdapter.register(gridSize = 2,
-            itemSpace = ItemSpace(edgeH = 10.dp(), spaceV = 8.dp(), spaceH = 8.dp())) {
+            itemSpace = ItemSpace(edgeH = 10.dp(), spaceV = 8.dp(), spaceH = 8.dp(), hasTop = true)) {
             StaggeredItemView(it.context)
         }
     }

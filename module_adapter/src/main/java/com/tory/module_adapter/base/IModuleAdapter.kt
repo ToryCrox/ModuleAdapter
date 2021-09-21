@@ -143,6 +143,6 @@ interface IModuleAdapter {
 }
 
 
-internal interface IModuleImplAdapter: IModuleAdapter {
+interface IModuleImplAdapter: IModuleAdapter {
     val delegate: ModuleAdapterDelegate
 }
