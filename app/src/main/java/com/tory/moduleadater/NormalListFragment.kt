@@ -55,6 +55,9 @@ class NormalListFragment : Fragment() {
         ) {
             ItemOneView(it.context)
         }
+        listAdapter.register {
+            ItemTitleView(it.context)
+        }
         listAdapter.registerModelKeyGetter<ItemTwoModel> { it.type }
         val itemSpace = ItemSpace(spaceH = 4.dp(), spaceV = 5.dp(), edgeH = 10.dp())
         listAdapter.register(
@@ -69,9 +72,7 @@ class NormalListFragment : Fragment() {
         ) {
             ItemTwoExtraView(it.context)
         }
-        listAdapter.register {
-            ItemTitleView(it.context)
-        }
+
 
     }
 

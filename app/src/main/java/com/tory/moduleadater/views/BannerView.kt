@@ -21,3 +21,15 @@ class BannerView @JvmOverloads constructor(
     override fun getLayoutId(): Int = R.layout.layout_mock_banner_view
 
 }
+
+data class Banner2Model(
+    val item: BannerModel
+)
+
+class Banner2View @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null
+) : AbsModuleView<BannerModel>(context, attrs) {
+
+    override fun getLayoutId(): Int = R.layout.layout_mock_banner_view
+
+}
