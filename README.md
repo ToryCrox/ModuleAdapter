@@ -70,7 +70,6 @@ private fun handleData(list: List<Any>) {
 ```
 
 ## 进阶使用
-进阶使用见交易首页MallListFragmentV3，交易首页有很多复杂的组件，使用ModuleAdapter可以使组件管理更加简便:
 
 ### 自定义view(业务组件)
 在自定义view之前，我们要先有一个明确的概念，就是我们目前定义的是业务相关的组件，与通用的UI控件widget是不同，我们称之为业务组件，是有明确的业务场景的，所以千万不要轻易复用
